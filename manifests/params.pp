@@ -30,12 +30,17 @@ class nrpe::params {
       $pid_file    = '/var/run/nrpe/nrpe.pid'
       $include_dir = '/etc/nrpe.d/'
 
-      file { '/etc/firewalld/services/nrpe.xml':
-        ensure => present,
-        owner  => 'root',
-        group  => 'root',
-        mode   => '0640',
-        source => 'puppet:///modules/nrpe/nrpe.xml',
+      case $::operatingsystem {
+        'CentOS', 'OracleLinux', 'RedHat', 'Scientific': {
+          file { '/etc/firewalld/services/nrpe.xml':
+            ensure => present,
+            owner  => 'root',
+            group  => 'root',
+            mode   => '0640',
+            source => 'puppet:///modules/nrpe/nrpe.xml',
+          }
+        }
+        default: { }
       }
     }
     default: {
