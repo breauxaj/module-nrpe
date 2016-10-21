@@ -1,0 +1,4 @@
+nrpe::checks:
+  'httpd':
+    ensure:  present
+    command: '/usr/lib64/nagios/plugins/check_procs -w 5:10 -c 5:20 -C httpd'
