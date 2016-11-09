@@ -19,6 +19,9 @@ class nrpe::plugins (
   $ensure = $::nrpe::params::nrpe_package_ensure
 ) inherits ::nrpe::params {
   case $::osfamily {
+    'Debian': {
+    
+    }
     'RedHat': {
       package { $::nrpe::params::nrpe_plugins_packages:
         ensure  => $ensure,
