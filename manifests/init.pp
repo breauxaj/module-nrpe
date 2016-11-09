@@ -21,6 +21,9 @@ class nrpe (
   include nrpe::plugins
 
   case $::osfamily {
+    'Debian': {
+    
+    }
     'RedHat': {
       package { $::nrpe::params::nrpe_package:
         ensure  => $ensure,
