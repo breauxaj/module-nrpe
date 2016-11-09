@@ -9,6 +9,9 @@ class nrpe::params {
   $nrpe_package_ensure = 'latest'
 
   case $::osfamily {
+    'Debian': {
+    
+    }
     'RedHat': {
       $nrpe_confd   = '/etc/nrpe.d'
       $nrpe_config  = '/etc/nagios/nrpe.cfg'
