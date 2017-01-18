@@ -22,7 +22,7 @@ class nrpe (
 
   case $::osfamily {
     'Debian': {
-    
+
     }
     'RedHat': {
       package { $::nrpe::params::nrpe_package:
