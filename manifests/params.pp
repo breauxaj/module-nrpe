@@ -10,7 +10,7 @@ class nrpe::params {
 
   case $::osfamily {
     'Debian': {
-    
+
     }
     'RedHat': {
       $nrpe_confd   = '/etc/nrpe.d'

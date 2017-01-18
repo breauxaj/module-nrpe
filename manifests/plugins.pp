@@ -20,7 +20,7 @@ class nrpe::plugins (
 ) inherits ::nrpe::params {
   case $::osfamily {
     'Debian': {
-    
+
     }
     'RedHat': {
       package { $::nrpe::params::nrpe_plugins_packages:
