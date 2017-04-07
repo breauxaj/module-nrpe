@@ -1,16 +1,16 @@
 define nrpe::config (
-  $allowed_hosts = [''],
+  $value
 ) {
   include ::nrpe
 
-  file { $::nrpe::params::nrpe_config:
-    ensure  => present,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    content => template('nrpe/nrpe.erb'),
+  $key = $title
+
+  augeas { "nrpe_cfg/${key}":
+    context => $::nrpe::params::nrpe_context,
+    onlyif  => "get ${key} != '${value}'",
+    changes => "set ${key} '${value}'",
     notify  => Service[$::nrpe::params::nrpe_service],
-    require => Package[$::nrpe::params::nrpe_package]
+    require => Package[$::nrpe::params::nrpe_package],
   }
 
 }
