@@ -12,7 +12,8 @@ define nrpe::config (
         owner  => 'root',
         group  => 'root',
         mode   => '0644',
-        source => 'puppet:///modules/nrpe/nrpe.aug'
+        source => 'puppet:///modules/nrpe/nrpe.aug',
+        before => Augeas["nrpe_cfg/${key}"]
       }
     }
     default: { }
