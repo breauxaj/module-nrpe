@@ -14,7 +14,7 @@ class nrpe::params {
     }
     'RedHat': {
       $nrpe_confd   = '/etc/nrpe.d'
-      $nrpe_config  = '/etc/nagios/nrpe.cfg'
+      $nrpe_context = '/files/etc/nagios/nrpe.cfg'
 
       $nrpe_package = 'nrpe'
       $nrpe_service = 'nrpe'
