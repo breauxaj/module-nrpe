@@ -29,11 +29,8 @@ class nrpe (
         ensure  => $ensure,
       }
 
-      $allowed_hosts = hiera_array('nrpe::allowed_hosts',[])
-
-      nrpe::config { 'default':
-        allowed_hosts => $allowed_hosts,
-      }
+      $config = hiera_array('nrpe::config',{})
+      create_resources('nrpe::config',$config)
 
       $checks = hiera_hash('nrpe::checks',{})
       create_resources('nrpe::check',$checks)
