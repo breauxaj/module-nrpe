@@ -10,7 +10,22 @@ class nrpe::params {
 
   case $::osfamily {
     'Debian': {
+      $nrpe_confd   = '/etc/nagios/nrpe.d'
+      $nrpe_context = '/files/etc/nagios/nrpe.cfg'
 
+      $nrpe_package = 'nagios-nrpe-server'
+      $nrpe_service = 'nagios-nrpe-server'
+
+      $nrpe_plugins = '/usr/lib/nagios/plugins'
+
+      $nrpe_plugins_packages = [
+        'monitoring-plugins-basic',
+        'monitoring-plugins-common',
+        'nagios-nrpe-plugin',
+        'nagios-plugins-basic',
+        'nagios-plugins-common',
+        'nagios-plugins-standard'
+      ]
     }
     'RedHat': {
       $nrpe_confd   = '/etc/nrpe.d'
@@ -27,11 +42,11 @@ class nrpe::params {
         'nagios-plugins-nrpe'
       ]
 
-      $nrpe_user  = 'nrpe'
-      $nrpe_group = 'nrpe'
+      #$nrpe_user  = 'nrpe'
+      #$nrpe_group = 'nrpe'
 
-      $pid_file    = '/var/run/nrpe/nrpe.pid'
-      $include_dir = '/etc/nrpe.d/'
+      #$pid_file    = '/var/run/nrpe/nrpe.pid'
+      #$include_dir = '/etc/nrpe.d/'
 
       case $::operatingsystem {
         'CentOS', 'OracleLinux', 'RedHat', 'Scientific': {

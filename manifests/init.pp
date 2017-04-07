@@ -20,30 +20,20 @@ class nrpe (
 ) inherits ::nrpe::params {
   include nrpe::plugins
 
-  case $::osfamily {
-    'Debian': {
+  package { $::nrpe::params::nrpe_package:
+    ensure  => $ensure,
+  }
 
-    }
-    'RedHat': {
-      package { $::nrpe::params::nrpe_package:
-        ensure  => $ensure,
-      }
+  $config = hiera_array('nrpe::config',{})
+  create_resources('nrpe::config',$config)
 
-      $config = hiera_array('nrpe::config',{})
-      create_resources('nrpe::config',$config)
+  $checks = hiera_hash('nrpe::checks',{})
+  create_resources('nrpe::check',$checks)
 
-      $checks = hiera_hash('nrpe::checks',{})
-      create_resources('nrpe::check',$checks)
-
-      service { $::nrpe::params::nrpe_service:
-        ensure  => running,
-        enable  => true,
-        require => Package[$::nrpe::params::nrpe_package]
-      }
-    }
-    default: {
-      fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
-    }
+  service { $::nrpe::params::nrpe_service:
+    ensure  => running,
+    enable  => true,
+    require => Package[$::nrpe::params::nrpe_package]
   }
 
 }
