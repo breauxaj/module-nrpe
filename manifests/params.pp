@@ -11,6 +11,7 @@ class nrpe::params {
   case $::osfamily {
     'Debian': {
       $nrpe_confd   = '/etc/nagios/nrpe.d'
+      $nrpe_config  = '/etc/nagios/nrpe.cfg'
       $nrpe_context = '/files/etc/nagios/nrpe.cfg'
 
       $nrpe_package = 'nagios-nrpe-server'
@@ -29,6 +30,7 @@ class nrpe::params {
     }
     'RedHat': {
       $nrpe_confd   = '/etc/nrpe.d'
+      $nrpe_config  = '/etc/nagios/nrpe.cfg'
       $nrpe_context = '/files/etc/nagios/nrpe.cfg'
 
       $nrpe_package = 'nrpe'

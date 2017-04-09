@@ -24,11 +24,11 @@ class nrpe (
     ensure  => $ensure,
   }
 
-  $config = hiera_array('nrpe::config',{})
-  create_resources('nrpe::config',$config)
-
   $checks = hiera_hash('nrpe::checks',{})
   create_resources('nrpe::check',$checks)
+
+  $config = hiera_hash('nrpe::config',{})
+  create_resources('nrpe::config',$config)
 
   service { $::nrpe::params::nrpe_service:
     ensure  => running,
