@@ -42,12 +42,6 @@ class nrpe::params {
         'nagios-plugins-nrpe'
       ]
 
-      #$nrpe_user  = 'nrpe'
-      #$nrpe_group = 'nrpe'
-
-      #$pid_file    = '/var/run/nrpe/nrpe.pid'
-      #$include_dir = '/etc/nrpe.d/'
-
       case $::operatingsystem {
         'CentOS', 'OracleLinux', 'RedHat', 'Scientific': {
           file { '/etc/firewalld/services/nrpe.xml':

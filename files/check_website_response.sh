@@ -10,7 +10,7 @@
 
 
 ### Environment paths
-NETCAT=/usr/bin/nc
+NETCAT=/bin/nc
 DATE=/bin/date
 WGET=/usr/bin/wget
 ECHO=/bin/echo
