@@ -17,12 +17,12 @@ class nrpe::params {
               $nrpe_confd   = '/etc/nagios/nrpe.d'
               $nrpe_config  = '/etc/nagios/nrpe.cfg'
               $nrpe_context = '/files/etc/nagios/nrpe.cfg'
-        
+
               $nrpe_package = 'nagios-nrpe-server'
               $nrpe_service = 'nagios-nrpe-server'
-        
+
               $nrpe_plugins = '/usr/lib/nagios/plugins'
-        
+
               $nrpe_plugins_packages = [
                 'monitoring-plugins-basic',
                 'monitoring-plugins-common',
@@ -42,12 +42,12 @@ class nrpe::params {
           $nrpe_confd   = '/etc/nrpe.d'
           $nrpe_config  = '/etc/nagios/nrpe.cfg'
           $nrpe_context = '/files/etc/nagios/nrpe.cfg'
-    
+
           $nrpe_package = 'nrpe'
           $nrpe_service = 'nrpe'
-    
+
           $nrpe_plugins = '/usr/lib64/nagios/plugins'
-    
+
           $nrpe_plugins_packages = [
             'nagios-plugins-all',
             'nagios-plugins-check-updates',
