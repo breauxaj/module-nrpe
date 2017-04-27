@@ -1,6 +1,13 @@
 node default {
   include ::nrpe
 
+  case $::operatingsystem {
+    'Amazon': {
+        Package { allow_virtual => false }
+    }
+    default: {}
+  }
+
   case $::osfamily {
     'Debian': {
      nrpe::check { 'httpd': command => '/usr/lib/nagios/plugins/check_procs -w 5:10 -c 5:20 -C apache2' }
